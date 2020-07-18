@@ -53,7 +53,7 @@ namespace OpenHAB.Windows.View
 
         private void ShowErrorMessage(FireErrorMessage message)
         {
-            ErrorNotification.Show(message.ErrorMessage);
+            //ErrorNotification.Show(message.ErrorMessage);
         }
 
         private void ShowInfoMessage(FireInfoMessage msg)
@@ -72,10 +72,10 @@ namespace OpenHAB.Windows.View
                     break;
             }
 
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal,() =>
-            {
-                InfoNotification.Show(message);
-            });
+            //Dispatcher.RunAsync(CoreDispatcherPriority.Normal,() =>
+            //{
+            //    InfoNotification.Show(message);
+            //});
         }
 
         private void MasterListView_OnItemClick(object sender, ItemClickEventArgs e)

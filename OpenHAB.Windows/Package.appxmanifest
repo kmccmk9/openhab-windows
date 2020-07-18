@@ -25,6 +25,13 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#FFFFFF" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="openhab">
+            <uap:DisplayName>OpenHAB</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

@@ -1,9 +1,10 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using Microsoft.Toolkit.Uwp.Helpers;
 using Newtonsoft.Json;
 using OpenHAB.Core.Messages;
+using Windows.UI.Xaml;
 
 namespace OpenHAB.Core.Model
 {
@@ -48,17 +49,17 @@ namespace OpenHAB.Core.Model
         /// </summary>
         public OpenHABItem()
         {
-            Messenger.Default.Register<UpdateItemMessage>(this, HandleUpdateItemMessage);
+            Messenger.Default.Register<UpdateItemMessage>(this, HandleUpdateItemMessageAsync);
         }
 
-        private void HandleUpdateItemMessage(UpdateItemMessage message)
+        private async void HandleUpdateItemMessageAsync(UpdateItemMessage message)
         {
             if (message.ItemName != Name)
             {
                 return;
             }
 
-            DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            await Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
                 State = message.Value;
             });

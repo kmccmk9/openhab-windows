@@ -33,7 +33,7 @@ namespace OpenHAB.Windows.Controls
                 if (!string.IsNullOrEmpty(state.Value))
                 {
                     string newstate = Regex.Replace(state.Groups[1].Value, "[^0-9a-zA-Z.&]", string.Empty);
-                    iconPath = control.IconPath.Replace(state.Groups[1].Value, newstate, StringComparison.InvariantCulture);
+                    iconPath = control.IconPath.Replace(state.Groups[1].Value, newstate);
                 }
             }
 

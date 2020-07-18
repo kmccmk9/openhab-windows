@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using GalaSoft.MvvmLight.Messaging;
-using Microsoft.Toolkit.Uwp.Connectivity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OpenHAB.Core.Common;
@@ -271,17 +270,13 @@ namespace OpenHAB.Core.SDK
                 return true;
             }
 
-            if (NetworkHelper.Instance.ConnectionInformation.IsInternetOnMeteredConnection)
+            if (settings.OpenHABRemoteUrl.Trim() == string.Empty)
             {
-                if (settings.OpenHABRemoteUrl.Trim() == string.Empty)
-                {
-                    throw new OpenHABException("No remote url configured");
-                }
-
-                OpenHABHttpClient.BaseUrl = settings.OpenHABRemoteUrl;
-                _connectionType = OpenHABHttpClientType.Remote;
-                return true;
+                throw new OpenHABException("No remote url configured");
             }
+
+            OpenHABHttpClient.BaseUrl = settings.OpenHABRemoteUrl;
+            _connectionType = OpenHABHttpClientType.Remote;
 
             bool isReachable = await CheckUrlReachability(settings.OpenHABUrl, settings, OpenHABHttpClientType.Local).ConfigureAwait(false);
             if (isReachable)

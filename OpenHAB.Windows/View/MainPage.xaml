@@ -4,7 +4,6 @@
 	  xmlns:controls="using:OpenHAB.Windows.Controls"
 	  xmlns:converters="using:OpenHAB.Windows.Converters"
 	  xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-	  xmlns:community="using:Microsoft.Toolkit.Uwp.UI.Controls"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -203,7 +202,7 @@
 
 		</SplitView>
 
-		<ToggleButton x:Name="TogglePaneButton"
+        <ToggleButton x:Name="TogglePaneButton"
 					  Grid.Row="0"
 					  Foreground="White"
 					  IsChecked="{Binding IsPaneOpen, ElementName=SitemapSplitView, Mode=TwoWay}"
@@ -211,24 +210,7 @@
 					  TabIndex="1"
 					  ToolTipService.ToolTip="Menu" />
 
-		<community:InAppNotification x:Uid="ErrorMessage"
-									 x:Name="ErrorNotification"
-									 Background="{StaticResource ErrorNotificationBackground}"
-									 ShowDismissButton="True"
-									 AnimationDuration="00:00:00.1000000"
-									 VerticalOffset="100"
-									 HorizontalOffset="0"
-									 StackMode="Replace" />
-
-		<community:InAppNotification x:Name="InfoNotification"
-									 Background="{StaticResource NotificationBackground}"
-									 ShowDismissButton="True"
-									 AnimationDuration="00:00:00.1000000"
-									 VerticalOffset="100"
-									 HorizontalOffset="0"
-									 StackMode="Replace" />
-		
-		<VisualStateManager.VisualStateGroups>
+        <VisualStateManager.VisualStateGroups>
 			<VisualStateGroup x:Name="WindowStates">
 				<VisualState x:Name="WideState">
 					<VisualState.StateTriggers>
